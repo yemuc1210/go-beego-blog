@@ -1,0 +1,56 @@
+{{ template "head.html"}}
+
+<!-- 下面编写页面的主题-->
+hello
+<!-- 导航面板 显示类别目标-进入某个类别后显示文章序号这样-->
+
+<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+        <img src="{{.themeImg}}/close.png" alt="Close"/>
+    </div>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu">
+        <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+        <!-- Dropdown Menu -->
+
+        <li>
+            <a class="sb-toggle-submenu">Tags<span class="sb-caret"></span></a>
+            <ul class="sb-submenu">
+                {{ range $i,$tag := .tags }}
+                <li><a href="/tags/{{$tag.Name}}" target="_BLANK" class="animsition-link">{{$tag.DisplayName}}<small>({{$tag.Num}})</small></a></li>
+                {{ end }}
+            </ul>
+        </li>
+
+
+        <li>
+            <a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            <ul class="sb-submenu">
+                {{ range $i,$cate := .cates }}
+                <li><a href="/categories/{{$cate.Cates.Name}}" class="animsition-link">{{ $cate.Html}}{{$cate.Cates.DisplayName}}</a></li>
+                {{end}}
+            </ul>
+        </li>
+
+
+        <li>
+            <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+            <ul class="sb-submenu">
+                {{ range $i,$link := .links }}
+                <li><a href="{{$link.Link}}" target="_BLANK" class="animsition-link">{{$link.Name}}</a></li>
+                {{end}}
+                <li><a href="https://www.iphpt.com/"  class="animsition-link">叶落山城秋</a></li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu secondary">
+        <li><a href="/detail/1" class="animsition-link" title="about">About</a></li>
+        {{/*        <li><a href="atom.xml" class="animsition-link" title="rss">RSS</a></li>*/}}
+        <li><a href="/rss" class="animsition-link" title="Rss">Rss</a></li>
+        <li><a href="/archives" class="animsition-link" title="Archives">Archives</a></li>
+
+    </ul>
+</div>
+<!-- ============================ END Off-canvas navigation =========================== -->
+{{ template "foot.html" . }}

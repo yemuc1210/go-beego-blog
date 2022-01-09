@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+<!--    显示在标签-->
+    <title> {{.Title}} - yefei's blog </title>
+<!--    导入css样式-->
+    <link rel = "stylesheet" href="/static/css/blog.css"/>
+<!--    font awesome库-->
+
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/css/all.css" media="screen" type="text/css">
+<!--    meta 元素提供页面有关的元信息，比如针对搜索引擎和更新频度的描述和关键词-->
+<!--    meta 定义有关文档的各种元数据，及网站的各种信息-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--    提供视口的大小,供移动设备使用-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1,maximum-scale=2">
+<!--    name属性和content属性结合使用 name表示元数据类型,标签的具体组呕吐  content是具体值-->
+    <meta name="author" content="1006537138@qq.com">
+<!--    当前页的说明-->
+    <meta name="description" content="使用golang 开发一个博客的尝试,平常也可用来存储自己的笔记">
+<!--   当前页的关键词,描述网页内容-->
+    <meta name="keywords" content="yefei, blog, golang, go, beego">
+
+</head>
+
+<body>
+<!--    header标签定义文档的页眉-->
+    <header class="header">
+<!--        class 属性绑定-->
+        <div class="headband"></div>
+<!--        导航条  className自定义的 对应css中的样式-->
+        <div class="navbar-container">
+<!--            根据路由规则返回首页-->
+            <a href="/" class="navbar-logo">  yefei's blog  </a>
+<!--            具体的导航项-->
+            <div class="navbar-menu">
+<!--                Blog 定义路由规则 -->
+                <a href="/blog" class="fa fa-link">Blog</a>
+<!--                Categories-->
+                <a href="/categories" class="fa fa-archive">Categories</a>
+<!--                About   另一个思路 froestblog 定义一个extraNav 即额外的导航条 使用-->
+                <a href="/about" class="fa fa-user">About</a>
+                {{range $nav :=  .Navs }}
+                <a href="/extra-nav?name={{ $nav.Title }}" class="fa fa-user">{{ $nav.Title }}</a>
+                {{end}}
+            </div>
+        </div>
+    </header>
